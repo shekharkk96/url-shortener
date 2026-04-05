@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "URL Shortener (Spring Boot + MySQL)",
+    "_postman_id": "b1c1232d-f42e-4b9b-93b3-e1a2312df441",
+    "description": "Postman collection for the URL Shortener service using Spring Boot + MySQL.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Short URL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"url\": \"https://google.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/shorten",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["shorten"]
+        }
+      }
+    },
+    {
+      "name": "Redirect to Original URL",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8081/{{shortCode}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["{{shortCode}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Sample Short Code Test",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8081/aZ5B",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["aZ5B"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "shortCode",
+      "value": "aZ5B"
+    }
+  ]
+}
